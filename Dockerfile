@@ -1,5 +1,5 @@
 FROM debian:jessie
-MAINTAINER Mauro <mauro@sdf.org>
+MAINTAINER Lennart <lennart@melzer.it>
 
 ###
 #
@@ -42,42 +42,31 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/* \
     && mkdir -p $HOME \
     && mkdir -p $HOME/.elisp \
-    && mkdir -p $HOME/livecode \
-    && mkdir -p $HOME/.emacs.d/themes \
-    && wget https://github.com/lvm/tidal-midi-gm/archive/master.zip -O $HOME/tidal-midi-gm.zip \
-    && wget https://raw.githubusercontent.com/lvm/cyberpunk-theme.el/master/cyberpunk-transparent-theme.el -O $HOME/.emacs.d/themes/cyberpunk-transparent-theme.el
-
-###
-#
-# COPY default configs
-#
-###
-COPY ["config/.bashrc", "$HOME/.bashrc"]
-COPY ["config/.bash_profile", "$HOME/.bash_profile"]
-COPY ["config/.motd", "$HOME/.motd"]
-COPY ["config/.tmux.conf", "$HOME/.tmux.conf"]
-COPY ["config/.emacs", "$HOME/.emacs"]
-COPY ["config/tidal.el", "$HOME/.elisp/tidal.el"]
-COPY ["tidal/init.tidal", "$HOME/livecode/init.tidal"]
-COPY ["tidal/helpers.tidal", "$HOME/livecode/helpers.tidal"]
+    && mkdir -p $HOME/livecode
 
 ###
 #
 # Install Tidal && Fix perms
 #
 ###
-
-
 RUN cabal update \
     && cabal install tidal-0.8 \
-    && cabal install tidal-midi-0.8 \
-    && unzip $HOME/tidal-midi-gm.zip -d $HOME \
-    && cd $HOME/tidal-midi-gm-master \
-    && cabal configure && cabal build && cabal install \
-    && cd $HOME \
-    && rm -fr $HOME/tidal-midi-gm-master $HOME/tidal-midi-gm.zip \
-    && chown -Rh $USER:$USER -- $HOME
+    && cabal install tidal-midi-0.8
 
+###
+#
+# COPY default configs
+#
+###
+ONBUILD COPY ["config/.bashrc", "$HOME/.bashrc"]
+ONBUILD COPY ["config/.bash_profile", "$HOME/.bash_profile"]
+ONBUILD COPY ["config/.motd", "$HOME/.motd"]
+ONBUILD COPY ["config/.tmux.conf", "$HOME/.tmux.conf"]
+ONBUILD COPY ["config/.emacs", "$HOME/.emacs"]
+ONBUILD COPY ["config/tidal.el", "$HOME/.elisp/tidal.el"]
+ONBUILD COPY ["tidal/init.tidal", "$HOME/livecode/init.tidal"]
+
+ONBUILD RUN chown -Rh $USER:$USER -- $HOME
 
 ###
 #
