@@ -70,6 +70,3 @@
 (execute-kbd-macro (symbol-function 'skillbuff))
 
 (find-file "~/livecode/init.tidal")
-
-(add-hook 'after-init-hook
-	        (lambda () (load-theme 'cyberpunk-transparent t)))
