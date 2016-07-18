@@ -3,4 +3,5 @@ cache/*.zip
 cache/*
 Dockerfile.local
 Dockerfile.release
+nvidia-driver.run
 
