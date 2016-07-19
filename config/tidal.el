@@ -8,12 +8,6 @@
 ;; point acquisition is courtesy `thingatpt'.  The directory search
 ;; facilities are courtesy `find-lisp'.
 
-;; notes from tida1vm:
-;; This mode is a modified version of the original `tidal.el`
-;; written by Alex McLean.  Please note that any reference to
-;; Dirt has been removed.
-;;
-
 (require 'scheme)
 (require 'comint)
 (require 'thingatpt)
@@ -62,36 +56,29 @@
     (tidal-see-output))
   (tidal-send-string ":set prompt \"\"")
   (tidal-send-string ":module Sound.Tidal.Context")
-  (tidal-send-string "(cps, getNow) <- cpsUtils")
+  (tidal-send-string "(cps, getNow) <- bpsUtils")
+  (tidal-send-string "(d1,t1) <- superDirtSetters getNow")
+  (tidal-send-string "(d2,t2) <- superDirtSetters getNow")
+  (tidal-send-string "(d3,t3) <- superDirtSetters getNow")
+  (tidal-send-string "(d4,t4) <- superDirtSetters getNow")
+  (tidal-send-string "(d5,t5) <- superDirtSetters getNow")
+  (tidal-send-string "(d6,t6) <- superDirtSetters getNow")
+  (tidal-send-string "(d7,t7) <- superDirtSetters getNow")
+  (tidal-send-string "(d8,t8) <- superDirtSetters getNow")
+  (tidal-send-string "(d9,t9) <- superDirtSetters getNow")
+  (tidal-send-string "(d10,t10) <- superDirtSetters getNow")
+  (tidal-send-string "(c1,ct1) <- dirtSetters getNow")
+  (tidal-send-string "(c2,ct2) <- dirtSetters getNow")
+  (tidal-send-string "(c3,ct3) <- dirtSetters getNow")
+  (tidal-send-string "(c4,ct4) <- dirtSetters getNow")
+  (tidal-send-string "(c5,ct5) <- dirtSetters getNow")
+  (tidal-send-string "(c6,ct6) <- dirtSetters getNow")
+  (tidal-send-string "(c7,ct7) <- dirtSetters getNow")
+  (tidal-send-string "(c8,ct8) <- dirtSetters getNow")
+  (tidal-send-string "(c9,ct9) <- dirtSetters getNow")
+  (tidal-send-string "(c10,ct10) <- dirtSetters getNow")
   (tidal-send-string "let bps x = cps (x/2)")
-
-  ;; begin of midi
-  (tidal-send-string "import Sound.Tidal.MIDI.Context")
-  (tidal-send-string "import Sound.Tidal.MIDI.VolcaBass")
-  (tidal-send-string "import Sound.Tidal.MIDI.VolcaBeats")
-  (tidal-send-string "import Sound.Tidal.MIDI.GMParams")
-  (tidal-send-string "import Sound.Tidal.MIDI.GMPerc")
-  (tidal-send-string "import Sound.Tidal.MIDI.GMSynth as GS")
-  (tidal-send-string "devices <- midiDevices")
-  (tidal-send-string "beat <- midiStream devices \"Midi Through Port-0\" 1 beatsController")
-  (tidal-send-string "bass <- midiStream devices \"Midi Through Port-0\" 2 bassController")
-  (tidal-send-string "drums <- midiStream devices \"Midi Through Port-0\" 3 percController")
-  (tidal-send-string "midi4 <- midiStream devices \"Midi Through Port-0\" 4 GS.synthController")
-  (tidal-send-string "midi5 <- midiStream devices \"Midi Through Port-0\" 5 GS.synthController")
-  (tidal-send-string "midi6 <- midiStream devices \"Midi Through Port-0\" 6 GS.synthController")
-  (tidal-send-string "midi7 <- midiStream devices \"Midi Through Port-0\" 7 GS.synthController")
-  (tidal-send-string "midi8 <- midiStream devices \"Midi Through Port-0\" 8 GS.synthController")
-  (tidal-send-string "midi9 <- midiStream devices \"Midi Through Port-0\" 9 GS.synthController")
-  (tidal-send-string "midi10 <- midiStream devices \"Midi Through Port-0\" 10 GS.synthController")
-  (tidal-send-string "midi11 <- midiStream devices \"Midi Through Port-0\" 11 GS.synthController")
-  (tidal-send-string "midi12 <- midiStream devices \"Midi Through Port-0\" 12 GS.synthController")
-  (tidal-send-string "midi13 <- midiStream devices \"Midi Through Port-0\" 13 GS.synthController")
-  (tidal-send-string "midi14 <- midiStream devices \"Midi Through Port-0\" 14 GS.synthController")
-  (tidal-send-string "midi15 <- midiStream devices \"Midi Through Port-0\" 15 GS.synthController")
-  (tidal-send-string "midi16 <- midiStream devices \"Midi Through Port-0\" 16 GS.synthController")
-  ;; end of midi
-
-  (tidal-send-string "let hush = mapM_ ($ silence) [beat,bass,drums,midi4,midi5,midi6,midi7,midi8,midi9,midi10,midi11,midi12,midi13,midi14,midi15,midi16]")
+  (tidal-send-string "let hush = mapM_ ($ silence) [c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,d1,d2,d3,d4,d5,d6,d7,d8,d9,d10]")
   (tidal-send-string "let solo = (>>) hush")
   (tidal-send-string ":set prompt \"tidal> \"")
 )
@@ -104,8 +91,6 @@
     (split-window-vertically)
     (with-current-buffer tidal-buffer
       (let ((window (display-buffer (current-buffer))))
-        (select-window window) ;; resize debug
-        (shrink-window 9) ;; resize debug
 	(goto-char (point-max))
 	(save-selected-window
 	  (set-window-point window (point-max)))))))
@@ -197,6 +182,144 @@
    )
   )
 
+(defun tidal-run-d1 ()
+  "Send the first instance of d1 to the interpreter as a single line."
+  (interactive)
+  (goto-char 0)
+  (search-forward "d1" nil nil 1)
+  (tidal-run-multiple-lines)
+  )
+
+(defun tidal-run-d2 ()
+  "Send the d2 to the interpreter as a single line."
+  (interactive)
+  (goto-char 0)
+  (search-forward "d2" nil nil 1)
+  (tidal-run-multiple-lines)
+  )
+
+(defun tidal-run-d3 ()
+  "Send the d3 to the interpreter as a single line."
+  (interactive)
+  (goto-char 0)
+  (search-forward "d3" nil nil 1)
+  (tidal-run-multiple-lines)
+  )
+
+(defun tidal-run-d4 ()
+  "Send the d4 to the interpreter as a single line."
+  (interactive)
+  (goto-char 0)
+  (search-forward "d4" nil nil 1)
+  (tidal-run-multiple-lines)
+  )
+(defun tidal-run-d5 ()
+  "Send the d5 to the interpreter as a single line."
+  (interactive)
+  (goto-char 0)
+  (search-forward "d5" nil nil 1)
+  (tidal-run-multiple-lines)
+  )
+(defun tidal-run-d6 ()
+  "Send the d6 to the interpreter as a single line."
+  (interactive)
+  (goto-char 0)
+  (search-forward "d6" nil nil 1)
+  (tidal-run-multiple-lines)
+  )
+(defun tidal-run-d7 ()
+  "Send the d7 to the interpreter as a single line."
+  (interactive)
+  (goto-char 0)
+  (search-forward "d7" nil nil 1)
+  (tidal-run-multiple-lines)
+  )
+(defun tidal-run-d8 ()
+  "Send the d9 to the interpreter as a single line."
+  (interactive)
+  (goto-char 0)
+  (search-forward "d8" nil nil 1)
+  (tidal-run-multiple-lines)
+  )
+(defun tidal-run-d9 ()
+  "Send the d9 to the interpreter as a single line."
+  (interactive)
+  (goto-char 0)
+  (search-forward "d9" nil nil 1)
+  (tidal-run-multiple-lines)
+  )
+
+
+(defun tidal-stop-d1 ()
+  "send d1 $ silence as a single line"
+  (interactive)
+  (tidal-send-string ":{")
+  (tidal-send-string " mapM_ ($ silence) [d1]")
+  (tidal-send-string ":}")
+  )
+
+(defun tidal-stop-d2 ()
+  "send d1 $ silence as a single line"
+  (interactive)
+  (tidal-send-string ":{")
+  (tidal-send-string " mapM_ ($ silence) [d2]")
+  (tidal-send-string ":}")
+  )
+(defun tidal-stop-d3 ()
+  "send d1 $ silence as a single line"
+  (interactive)
+  (tidal-send-string ":{")
+  (tidal-send-string " mapM_ ($ silence) [d3]")
+  (tidal-send-string ":}")
+  )
+
+
+(defun tidal-stop-d4 ()
+  "send d1 $ silence as a single line"
+  (interactive)
+  (tidal-send-string ":{")
+  (tidal-send-string " mapM_ ($ silence) [d4]")
+  (tidal-send-string ":}")
+  )
+
+(defun tidal-stop-d5 ()
+  "send d1 $ silence as a single line"
+  (interactive)
+  (tidal-send-string ":{")
+  (tidal-send-string " mapM_ ($ silence) [d5]")
+  (tidal-send-string ":}")
+  )
+(defun tidal-stop-d6 ()
+  "send d1 $ silence as a single line"
+  (interactive)
+  (tidal-send-string ":{")
+  (tidal-send-string " mapM_ ($ silence) [d6]")
+  (tidal-send-string ":}")
+  )
+
+(defun tidal-stop-d7 ()
+  "send d1 $ silence as a single line"
+  (interactive)
+  (tidal-send-string ":{")
+  (tidal-send-string " mapM_ ($ silence) [d7]")
+  (tidal-send-string ":}")
+  )
+
+(defun tidal-stop-d8 ()
+  "send d1 $ silence as a single line"
+  (interactive)
+  (tidal-send-string ":{")
+  (tidal-send-string " mapM_ ($ silence) [d8]")
+  (tidal-send-string ":}")
+  )
+(defun tidal-stop-d9 ()
+  "send d1 $ silence as a single line"
+  (interactive)
+  (tidal-send-string ":{")
+  (tidal-send-string " mapM_ ($ silence) [d9]")
+  (tidal-send-string ":}")
+  )
+
 (defun tidal-run-region ()
   "Place the region in a do block and compile."
   (interactive)
@@ -239,7 +362,25 @@
   (define-key map [?\C-c ?\C-l] 'tidal-load-buffer)
   (define-key map [?\C-c ?\C-i] 'tidal-interrupt-haskell)
   (define-key map [?\C-c ?\C-m] 'tidal-run-main)
-  (define-key map [?\C-c ?\C-h] 'tidal-help))
+  (define-key map [?\C-c ?\C-h] 'tidal-help)
+  (define-key map [?\C-c ?\C-1] 'tidal-run-d1)
+  (define-key map [?\C-c ?\C-2] 'tidal-run-d2)
+  (define-key map [?\C-c ?\C-3] 'tidal-run-d3)
+  (define-key map [?\C-c ?\C-4] 'tidal-run-d4)
+  (define-key map [?\C-c ?\C-5] 'tidal-run-d5)
+  (define-key map [?\C-c ?\C-6] 'tidal-run-d6)
+  (define-key map [?\C-c ?\C-7] 'tidal-run-d7)
+  (define-key map [?\C-c ?\C-8] 'tidal-run-d8)
+  (define-key map [?\C-c ?\C-9] 'tidal-run-d9)
+  (define-key map [?\C-v ?\C-1] 'tidal-stop-d1)
+  (define-key map [?\C-v ?\C-2] 'tidal-stop-d2)
+  (define-key map [?\C-v ?\C-3] 'tidal-stop-d3)
+  (define-key map [?\C-v ?\C-4] 'tidal-stop-d4)
+  (define-key map [?\C-v ?\C-5] 'tidal-stop-d5)
+  (define-key map [?\C-v ?\C-6] 'tidal-stop-d6)
+  (define-key map [?\C-v ?\C-7] 'tidal-stop-d7)
+  (define-key map [?\C-v ?\C-8] 'tidal-stop-d8)
+  (define-key map [?\C-v ?\C-9] 'tidal-stop-d9))
 
 (defun turn-on-tidal-keybindings ()
   "Haskell Tidal keybindings in the local map."
@@ -253,7 +394,25 @@
   (local-set-key [?\C-c ?\C-l] 'tidal-load-buffer)
   (local-set-key [?\C-c ?\C-i] 'tidal-interrupt-haskell)
   (local-set-key [?\C-c ?\C-m] 'tidal-run-main)
-  (local-set-key [?\C-c ?\C-h] 'tidal-help))
+  (local-set-key [?\C-c ?\C-h] 'tidal-help)
+  (local-set-key [?\C-c ?\C-1] 'tidal-run-d1)
+  (local-set-key [?\C-c ?\C-2] 'tidal-run-d2)
+  (local-set-key [?\C-c ?\C-3] 'tidal-run-d3)
+  (local-set-key [?\C-c ?\C-4] 'tidal-run-d4)
+  (local-set-key [?\C-c ?\C-5] 'tidal-run-d5)
+  (local-set-key [?\C-c ?\C-6] 'tidal-run-d6)
+  (local-set-key [?\C-c ?\C-7] 'tidal-run-d7)
+  (local-set-key [?\C-c ?\C-8] 'tidal-run-d8)
+  (local-set-key [?\C-c ?\C-9] 'tidal-run-d9)
+  (local-set-key [?\C-v ?\C-1] 'tidal-stop-d1)
+  (local-set-key [?\C-v ?\C-2] 'tidal-stop-d2)
+  (local-set-key [?\C-v ?\C-3] 'tidal-stop-d3)
+  (local-set-key [?\C-v ?\C-4] 'tidal-stop-d4)
+  (local-set-key [?\C-v ?\C-5] 'tidal-stop-d5)
+  (local-set-key [?\C-v ?\C-6] 'tidal-stop-d6)
+  (local-set-key [?\C-v ?\C-7] 'tidal-stop-d7)
+  (local-set-key [?\C-v ?\C-8] 'tidal-stop-d8)
+  (local-set-key [?\C-v ?\C-9] 'tidal-stop-d9))
 
 (defun tidal-mode-menu (map)
   "Haskell Tidal menu."

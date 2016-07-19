@@ -1,4 +1,4 @@
-FROM 90c202b23b00
+FROM tidal-0.8:latest
 
 RUN apt-get update && \
     apt-get install -yq \
