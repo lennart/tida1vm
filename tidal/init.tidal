@@ -1,5 +1,8 @@
+
 import Graphics.Daumenkino.Context
-(s1,st1) <- primSetters' "192.168.188.36" 23451 getNow
+
+
+(s1,st1) <- (\ip -> primSetters' ip 23451 getNow) =<< serverIp
 
 s1 $ x (slow 8 sine1) # n "0" # s "cube" |*| x "4"
 
