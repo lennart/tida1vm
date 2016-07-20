@@ -55,7 +55,7 @@
      tidal-interpreter-arguments)
     (tidal-see-output))
   (tidal-send-string ":set prompt \"\"")
-  (tidal-send-string ":module Sound.Tidal.Context")
+  (tidal-send-string ":module Graphics.Daumenkino.Context")
   (tidal-send-string "(cps, getNow) <- bpsUtils")
   (tidal-send-string "(d1,t1) <- superDirtSetters getNow")
   (tidal-send-string "(d2,t2) <- superDirtSetters getNow")

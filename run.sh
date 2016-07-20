@@ -16,10 +16,8 @@ xauth nlist $DISPLAY | sed -e 's/^..../ffff/' | xauth -f $XAUTH nmerge -
 
 docker run \
        --privileged \
-	     -v $XAUTH:$XAUTH \
+	     -v $XSOCK:$XSOCK \
        -v /home/m/Daumenkino:/home/tidal/Daumenkino \
-       --net=host \
        --device=/dev/dri/card0:/dev/dri/card0 \
 	     -e DISPLAY=$DISPLAY \
-	     -e XAUTHORITY=$XAUTH \
        $args

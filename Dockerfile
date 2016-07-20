@@ -26,3 +26,6 @@ RUN git clone https://github.com/lennart/Daumenkino && \
 #     chown ${uid}:${gid} -R /home/tidal
     
 # USER tidal
+EXPOSE 23451
+
+COPY helpers/server.sh server.sh
