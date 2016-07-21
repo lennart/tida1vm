@@ -1,3 +1,0 @@
-import System/Environment
-
-let serverIp = getEnv "DKSERVER_PORT_23451_TCP_ADDR"

@@ -67,6 +67,5 @@
 (sleep-for 2)
 (execute-kbd-macro (symbol-function 'seval))
 (sleep-for 2)
-(execute-kbd-macro (symbol-function 'skillbuff))
-
+(tidal-see-output)
 (find-file "~/livecode/init.tidal")
