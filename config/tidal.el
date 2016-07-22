@@ -58,7 +58,7 @@
   (tidal-send-string ":module Sound.Tidal.Context")
   (tidal-send-string "import Graphics.Daumenkino.Context")
   (tidal-send-string "import System.Environment")
-  (tidal-send-string "let serverIp = getEnv \"DKSERVER_PORT_23451_UDP_ADDR\"")  
+  (tidal-send-string "let serverIp = getEnv \"DAUMENKINO_IP\"")  
   (tidal-send-string "(cps, getNow) <- cpsUtils")
   (tidal-send-string "(d1,t1) <- superDirtSetters getNow")
   (tidal-send-string "(d2,t2) <- superDirtSetters getNow")

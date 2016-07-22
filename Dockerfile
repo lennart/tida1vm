@@ -80,12 +80,13 @@ USER $USER
 WORKDIR /home/tidal
 EXPOSE 23451/udp
 
-COPY helpers/server.sh server.sh
 COPY ["config/.bashrc", "$HOME/.bashrc"]
 COPY ["config/.bash_profile", "$HOME/.bash_profile"]
 COPY ["config/.motd", "$HOME/.motd"]
 COPY ["config/.tmux.conf", "$HOME/.tmux.conf"]
 COPY ["config/.emacs", "$HOME/.emacs"]
 COPY ["config/tidal.el", "$HOME/.elisp/tidal.el"]
-COPY ["tidal/init.tidal", "$HOME/livecode/init.tidal"]
-COPY ["tidal/helpers.tidal", "$HOME/livecode/helpers.tidal"]
+COPY ["tidal/init.tidal", "tidal/helpers.tidal", "$HOME/livecode/"]
+COPY ["helpers/server.sh", "helpers/client.sh", "$HOME/"]
+
+

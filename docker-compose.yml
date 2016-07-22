@@ -1,0 +1,23 @@
+version: "2"
+services:
+  server:
+    build: .
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - /home/m/Daumenkino:/home/tidal/Daumenkino
+    entrypoint: /home/tidal/server.sh
+    privileged: true
+    devices:
+      - /dev/dri/card0:/dev/dri/card0
+    environment:
+      DISPLAY: ":0"
+      DEBUG: "1"
+  client:
+    tty: true
+    build: .
+    volumes:
+      - /home/m/Daumenkino:/home/tidal/Daumenkino    
+    links:
+      - server
+    entrypoint: /home/tidal/client.sh
+
