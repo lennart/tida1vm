@@ -23,8 +23,8 @@ ENV DEBIAN_FRONTEND noninteractive
 COPY ["config/etc/apt/sources.list.d/backports.list", "/etc/apt/sources.list.d/backports.list"]
 
 RUN echo \
-   'deb ftp://ftp.us.debian.org/debian/ jessie main\n \
-    deb ftp://ftp.us.debian.org/debian/ jessie-updates main\n \
+   'deb ftp://ftp.de.debian.org/debian/ jessie main\n \
+    deb ftp://ftp.de.debian.org/debian/ jessie-updates main\n \
     deb http://security.debian.org jessie/updates main\n' \
     > /etc/apt/sources.list
 
@@ -46,7 +46,7 @@ RUN apt-get update \
     haskell-mode \
     liblo7 \
     libportmidi0 \
-    libportmidi-dev
+    libportmidi-dev \
     libasound2-dev \
     libglfw3-dev \
     mesa-utils \
