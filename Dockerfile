@@ -39,12 +39,12 @@ RUN apt-get update \
     && apt-get install -yq \
     binutils \
     curl \
-    cabal-install    
+    cabal-install \
     ca-certificates \
     emacs24-nox \
     git-core \
     haskell-mode \
-    liblo7
+    liblo7 \
     libportmidi0 \
     libportmidi-dev
     libasound2-dev \
