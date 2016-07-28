@@ -31,14 +31,25 @@ COPY ["config/etc/apt/sources.list.d/backports.list", "/etc/apt/sources.list.d/b
 RUN apt-get update \
     && apt-get -y upgrade \
     && apt-get install -yq \
-    emacs24-nox haskell-mode tmux \
-    zlib1g-dev liblo7 libportmidi0 \
-    libportmidi-dev libasound2-dev \
-    cabal-install wget unzip \
+    binutils
+    curl \
+    cabal-install    
     ca-certificates \
-    xorg-dev x-window-system \
+    emacs24-nox \
+    git-core \
+    haskell-mode \
+    liblo7
+    libportmidi0 \
+    libportmidi-dev
+    libasound2-dev \
     libglfw3-dev \
-    binutils mesa-utils module-init-tools git-core \
+    mesa-utils \
+    module-init-tools \
+    tmux \
+    unzip \
+    xorg-dev \
+    x-window-system \
+    zlib1g-dev \
     --no-install-recommends \
     && apt-get install -yt jessie-backports ghc \
     && apt-get clean \
@@ -53,7 +64,14 @@ RUN apt-get update \
 #
 ###
 # proprietary stuff
-ADD nvidia-driver.run /tmp/nvidia-driver.run
+
+ENV NVIDIA_VERSION 304.131
+
+RUN curl -L http://us.download.nvidia.com/XFree86/Linux-x86_64/{$NVIDIA_VERSION}/NVIDIA-Linux-x86_64-${NVIDIA_VERSION}.run \
+    > /tmp/nvidia-driver.run
+  # wget -O nvidia-driver.run $nvidia_driver_uri
+
+# ADD nvidia-driver.run /tmp/nvidia-driver.run
 RUN sh /tmp/nvidia-driver.run -a -N --ui=none --no-kernel-module && \
     rm /tmp/nvidia-driver.run
 
