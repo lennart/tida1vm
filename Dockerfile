@@ -31,7 +31,7 @@ COPY ["config/etc/apt/sources.list.d/backports.list", "/etc/apt/sources.list.d/b
 RUN apt-get update \
     && apt-get -y upgrade \
     && apt-get install -yq \
-    binutils
+    binutils \
     curl \
     cabal-install    
     ca-certificates \
