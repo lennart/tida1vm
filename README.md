@@ -1,17 +1,32 @@
 # tida1vm
 
-Based on the work of [DoubleDensity's Tidebox](https://github.com/DoubleDensity/tidebox)
+
+
+Based on the work of [DoubleDensity's Tidebox](https://github.com/DoubleDensity/tidebox) and
+[tida1vm by @lvm](https://github.com/lvm/tida1vm)
 
 > A complete Tidal musical live coding and audio streaming environment inside Docker
 
+uses `tidal-0.8` and `tidal-midi-0.8`
+
 ## Getting started
 
+You can use `docker pull` to get a recent built image for tidal.
+
+```bash
+$ docker pull lennart/tida1vm:0.8
+```
+
+If you want extra control you follow the instructions below to customize the default tidal image.
+
+### Build from source
+
 ```bash  
-$ git clone https://github.com/lvm/tida1vm
+$ git clone https://github.com/lennart/tida1vm
 $ cd tida1vm
 $ git checkout 0.8
-$ docker build -t tida1vm-0.8 .
-$ docker run -ti --rm --privileged -v /dev/bus/usb:/dev/bus/usb --name 1vm8 tida1vm-0.8
+$ docker build -t tida1vm:0.8 .
+$ docker run -ti --rm --privileged -v /dev/bus/usb:/dev/bus/usb --name 1vm8 tida1vm:0.8
 ```
 
 ## MIDI Ports
@@ -82,9 +97,6 @@ For more info, take a look at the [wiki](https://github.com/lvm/tida1vm/wiki).
 - [Tidal](http://tidal.lurk.org)
 - [GNU Emacs](https://www.gnu.org/software/emacs/)
 - [tmux](https://tmux.github.io/)
-- [FluidSynth](http://www.fluidsynth.org/)
-- [Qsynth](http://qsynth.sourceforge.net/qsynth-index.html)
-- [amsynth](https://amsynth.github.io/)
 - [GM Level 1 Sound Set](https://www.midi.org/specifications/item/gm-level-1-sound-set)
 - [GeneralUser SoundFont](http://www.schristiancollins.com/generaluser.php)
 - [TOPLAP The Home of Live Coding](http://toplap.org/)
