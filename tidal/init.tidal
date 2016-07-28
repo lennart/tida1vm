@@ -1,5 +1,12 @@
 (s1,st1) <- (\ip -> primSetters' ip 23451 getNow) =<< serverIp
 
-s1 $ x "{0.3 0.8 -1.9}(3 5,8)" # n "0" # s "cube" |*| x "8" # dur "1"
+s1 $ slowspread slow [2,3] $
+  n (run 256) # x (density 3 sine1)
+  # y (density 2 tri1)
+  # s "cube" # dur "5"
+  |-| x (slow 8 saw1)
+  |-| y (slow 2 sine1)
+  # blue (slow 4 saw1)
+  # green (slow 3 saw1)
 
-hush
+s1 silence
