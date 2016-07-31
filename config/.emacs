@@ -43,4 +43,4 @@
 
 (find-file "~/livecode/init.tidal")
 
-(tidal-start)
+(tidal-start-haskell)
