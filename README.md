@@ -1,18 +1,22 @@
 # _xzy_kl
 
+__Development version__
+
 Based on the work of [DoubleDensity's Tidebox](https://github.com/DoubleDensity/tidebox) and
 [tida1vm by @lvm](https://github.com/lvm/tida1vm)
 
 > A complete Tidalesque musical live coding and audio streaming environment inside Docker
 
-uses latest stable version of `tidal` (currently 0.8)
+uses latest development version of Tidal.
 
 ## Getting started
 
 You can use `docker pull` to get a recent built image for tidal.
 
 ```bash
-$ docker pull lennart/tida1vm:latest
+$ docker pull lennart/tida1vm:0.9-dev
+
+__Beware this build might not be up to date with current state of git branch `0.9-dev` of tidal.__
 ```
 
 If you want extra control you follow the instructions below to customize the default tidal image.
@@ -22,9 +26,9 @@ If you want extra control you follow the instructions below to customize the def
 ```bash  
 $ git clone https://github.com/lennart/tida1vm
 $ cd xzykl
-$ git checkout master
-$ docker build -t tida1vm:latest .
-$ docker run -ti --rm --privileged --name xzykl xzykl:latest
+$ git checkout 0.9-dev
+$ docker build -t tida1vm:0.9-dev .
+$ docker run -ti --rm --privileged --name xzykl xzykl:0.9-dev
 ```
 
 ## References
