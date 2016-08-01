@@ -69,6 +69,7 @@ ONBUILD COPY ["config/.bash_profile", "$HOME/.bash_profile"]
 ONBUILD COPY ["config/.motd", "$HOME/.motd"]
 ONBUILD COPY ["config/.tmux.conf", "$HOME/.tmux.conf"]
 ONBUILD COPY ["config/.emacs", "$HOME/.emacs"]
+ONBUILD COPY ["config/inputrc", "$HOME/.inputrc"]
 ONBUILD COPY ["config/tidal.el", "$HOME/.elisp/tidal.el"]
 ONBUILD COPY ["tidal/init.tidal", "$HOME/livecode/init.tidal"]
 

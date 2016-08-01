@@ -1,0 +1,9 @@
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+
+set show-all-if-ambiguous on
+set completion-ignore-case on
+
+# suckless st: move left and right by words using alt-left/alt-right
+"\e[1;3D": "\eb"
+"\e[1;3C": "\ef"
